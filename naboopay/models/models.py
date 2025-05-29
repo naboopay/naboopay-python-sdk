@@ -5,8 +5,9 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
-from ..config.settings import BASE_URL
-from ..utils.exceptions import APIError, AuthenticationError, NabooPayError
+from naboopay.config.settings import BASE_URL
+from naboopay.utils.exceptions import (APIError, AuthenticationError,
+                                       NabooPayError)
 
 
 class Wallet(str, Enum):
