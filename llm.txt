@@ -1,0 +1,251 @@
+# NabooPay Python SDK Docs
+
+A concise guide to installing and using the NabooPay Python SDK in both synchronous and asynchronous modes. You’ll learn how to:
+
+* Install the SDK
+* Initialize clients
+* Retrieve account details
+* Create, delete, and fetch transactions
+* Perform cashouts via Wave and Orange Money
+
+---
+
+## 1. Installation
+
+```bash
+# Install directly from GitHub
+pip install git+https://github.com/naboopay/naboopay-python-sdk.git
+```
+
+---
+
+## 2. Client Initialization
+
+### 2.1 Load API Token
+
+```python
+# Load your NABOOPAY_API_KEY from .env
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+token = os.getenv("NABOOPAY_API_KEY")
+```
+
+### 2.2 Synchronous Client
+
+```python
+from naboopay import NabooPay
+
+# Instantiate sync client
+client = NabooPay(token=token)
+```
+
+### 2.3 Asynchronous Client
+
+```python
+from naboopay import NabooPayAsync
+
+# Instantiate async client
+async_client = NabooPayAsync(token=token)
+```
+
+---
+
+## 3. Operations
+
+### 3.1 Retrieve Account Details
+
+#### 3.1.1 Synchronous
+
+```python
+info = client.account.get_info()
+print(info)
+```
+
+#### 3.1.2 Asynchronous
+
+```python
+import asyncio
+
+async def get_account():
+    info = await async_client.account.get_info()
+    print(info)
+
+asyncio.run(get_account())
+```
+
+---
+
+### 3.2 Transactions
+
+#### 3.2.1 Create Transaction
+
+```python
+from naboopay.models import TransactionRequest, ProductModel, Wallet
+
+request = TransactionRequest(
+    method_of_payment=[Wallet.WAVE, Wallet.ORANGE_MONEY, Wallet.FREE_MONEY],
+    products=[
+        ProductModel(
+            name="T-shirt",
+            category="clothing",
+            amount=10000,
+            quantity=1,
+            description="Test item",
+        ),
+    ],
+)
+```
+
+* **Sync**
+
+  ```python
+  from naboopay.models import TransactionResponse
+
+  resp = client.transaction.create(request=request)
+  print(resp)
+  ```
+* **Async**
+
+  ```python
+  async def create_tx():
+      resp = await async_client.transaction.create(request=request)
+      print(resp)
+      return resp
+
+  tx = asyncio.run(create_tx())
+  ```
+
+#### 3.2.2 Delete Transaction
+
+* **Sync**
+
+  ```python
+  from naboopay.models import DeleteTransactionRequest
+
+  del_req = DeleteTransactionRequest(order_id=resp.order_id)
+  del_resp = client.transaction.delete(request=del_req)
+  print(del_resp)
+  ```
+* **Async**
+
+  ```python
+  del_req = DeleteTransactionRequest(order_id=tx.order_id)
+
+  async def delete_tx():
+      resp = await async_client.transaction.delete(request=del_req)
+      print(resp)
+
+  asyncio.run(delete_tx())
+  ```
+
+#### 3.2.3 Get Transactions
+
+* **Fetch All (Sync)**
+
+  ```python
+  all_tx = client.transaction.get_all()
+  print(all_tx)
+  ```
+* **Fetch One by ID (Sync)**
+
+  ```python
+  oid = all_tx.transactions[0].order_id
+  one_tx = client.transaction.get_one(order_id=oid)
+  print(one_tx)
+  ```
+* **Fetch All (Async)**
+
+  ```python
+  async def get_all():
+      print(await async_client.transaction.get_all())
+
+  asyncio.run(get_all())
+  ```
+* **Fetch One (Async)**
+
+  ```python
+  async def get_one():
+      print(await async_client.transaction.get_one(order_id=oid))
+
+  asyncio.run(get_one())
+  ```
+
+---
+
+### 3.3 Cashout
+
+#### 3.3.1 Wave Cashout
+
+```python
+from naboopay.models import CashOutRequest
+
+wave_req = CashOutRequest(
+    full_name="sudoping01",
+    amount=10000,
+    phone_number="+221787953075",
+)
+```
+
+* **Sync**
+
+  ```python
+  try:
+      resp = client.cashout.wave(request=wave_req)
+      print(resp)
+  except Exception as e:
+      print("Error:", e)
+  ```
+* **Async**
+
+  ```python
+  async def wave_out():
+      try:
+          print(await async_client.cashout.wave(request=wave_req))
+      except Exception as e:
+          print("Error:", e)
+
+  asyncio.run(wave_out())
+  ```
+
+#### 3.3.2 Orange Money Cashout
+
+```python
+orange_req = CashOutRequest(
+    full_name="Djim Patrick Lo",
+    amount=100,
+    phone_number="+221772415977",
+)
+```
+
+* **Sync**
+
+  ```python
+  try:
+      resp = client.cashout.orange_money(request=orange_req)
+      print(resp)
+  except Exception as e:
+      print("Error:", e)
+  ```
+* **Async**
+
+  ```python
+  async def orange_out():
+      try:
+          print(await async_client.cashout.orange_money(request=orange_req))
+      except Exception as e:
+          print("Error:", e)
+
+  asyncio.run(orange_out())
+  ```
+
+---
+
+## 4. Next Steps
+
+* Explore additional SDK methods under `client.account`, `client.transaction`, and `client.cashout`.
+* Integrate these calls into your application’s business logic.
+* Review error handling patterns for production readiness.
+
+— End of Doc —
