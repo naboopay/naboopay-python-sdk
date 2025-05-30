@@ -16,8 +16,8 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/sudoping01/naboopay",
     project_urls={
-        "Bug Tracker": "https://github.com/sudoping01/naboopay/issues",
-        "Documentation": "https://docs.naboopay.com",
+        "Bug Tracker": " https://github.com/naboopay/naboopay-python-sdk/issues",
+        "Documentation": " https://github.com/naboopay/naboopay-python-sdk.git",
         "Source Code": "https://github.com/sudoping01/naboopay",
     },
     packages=find_packages(),
