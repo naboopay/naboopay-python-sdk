@@ -4,7 +4,7 @@ class Auth:
 
         if not token:
             raise ValueError(
-                "API token must be provided via parameter or NABOO_PAY_API_KEY environment variable"
+                "API token must be provided via parameter or NABOOPAY_API_KEY environment variable"
             )
 
     def get_headers(self):
