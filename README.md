@@ -58,6 +58,9 @@ import os
 load_dotenv()
 token = os.environ.get("NABOOPAY_API_KEY")
 # Alternatively: token = "your_token_here" (but shh, that’s not safe!)
+
+phone_number_1 = os.environ.get("TEST_NUMBER_1")
+phone_number_2 = os.environ.get("TEST_NUMBER_2")
 ```
 
 ### Synchronous Client
@@ -254,7 +257,7 @@ from naboopay.models import CashOutRequest
 request_wave: CashOutRequest = CashOutRequest(
     full_name="sudoping01",
     amount=10000,
-    phone_number="+221787953075",  # Don’t change this unless you’re testing sudoping01 likes it this way! 😂
+    phone_number=phone_number_1,  # Don’t change this unless you’re testing sudoping01 likes it this way! 😂
 )
 ```
 
@@ -293,7 +296,7 @@ Another cashout, this time with Orange Money:
 request_orange: CashOutRequest = CashOutRequest(
     full_name="Djim Patrick Lo",  # Hi Patrick! 😂
     amount=100,
-    phone_number="+221772415977",  # Swap this out for testing, or Patrick might cash in!
+    phone_number=phone_number_2,  # Swap this out for testing, or Patrick might cash in!
 )
 ```
 

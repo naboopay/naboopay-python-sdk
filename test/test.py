@@ -11,6 +11,8 @@ from naboopay.models import (DeleteTransactionRequest, ProductModel,
 # Load environment variables from .env file
 load_dotenv()
 token = os.environ.get("NABOOPAY_API_KEY")
+number_1 = os.environ.get("TEST_NUMBER_1")
+number_2 = os.environ.get("TEST_NUMBER_2")
 
 # Initialize synchronous and asynchronous clients with the API token
 naboopay_client = NabooPay(token=token)
@@ -186,7 +188,7 @@ asyncio.run(get_one_transaction_async())
 request_wave: CashOutRequest = CashOutRequest(
     full_name="sudoping01",
     amount=10000,
-    phone_number="+221787953075",  # please when testing don't change this number 😂
+    phone_number=number_1,  # please when testing don't change this number 😂
 )
 
 
@@ -226,7 +228,7 @@ asyncio.run(cashout_wave_async())
 request_orange: CashOutRequest = CashOutRequest(
     full_name="Djim Patrick Lo",  # 😂 Patrick
     amount=100,
-    phone_number="+221772415977",  # please don't forget to change this num to the first one 😂
+    phone_number=number_2,  # please don't forget to change this num to the first one 😂
 )
 
 #               |==================|
