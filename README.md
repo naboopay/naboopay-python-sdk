@@ -59,6 +59,7 @@ load_dotenv()
 token = os.environ.get("NABOOPAY_API_KEY")
 # Alternatively: token = "your_token_here" (but shh, that’s not safe!)
 
+# You wanna know my phone number 😂, no bro you can't 🙃 let's load them as env var
 phone_number_1 = os.environ.get("TEST_NUMBER_1")
 phone_number_2 = os.environ.get("TEST_NUMBER_2")
 ```
@@ -327,4 +328,4 @@ asyncio.run(cashout_orange_async())
 
 ## Wrapping Up
 
-And there you have it a full workshop on using the NabooPay Python SDK! You’ve installed it, set up clients, and mastered account details, transactions, and cashouts both synchronously and asynchronously. Pretty cool, right? Feel free to tweak the code, explore more features, and keep the good vibes going. Good Integration into!
+And there you have it a full workshop on using the NabooPay Python SDK! You’ve installed it, set up clients, and mastered account details, transactions, and cashouts both synchronously and asynchronously. Pretty cool, right? Feel free to tweak the code, explore more features, and keep the good vibes going. Good Integration 🫂!
