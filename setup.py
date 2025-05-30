@@ -52,7 +52,7 @@ setup(
             "black>=23.0.0",
             "isort>=5.0.0",
             "ruff>=0.11.4",
-            "pre-commit>=2.15.0ruff",
+            "pre-commit>=2.15.0",
         ],
         "docs": [
             "sphinx>=4.0.0",
