@@ -11,6 +11,7 @@ from naboopay.models import (DeleteTransactionRequest, ProductModel,
 # Load environment variables from .env file
 load_dotenv()
 token = os.environ.get("NABOOPAY_API_KEY")
+
 number_1 = os.environ.get("TEST_NUMBER_1")
 number_2 = os.environ.get("TEST_NUMBER_2")
 
