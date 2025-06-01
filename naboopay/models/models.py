@@ -163,3 +163,11 @@ class CodeStatusExceptions:
     }
 
     default = NabooPayError
+
+
+class WebhookModel(BaseModel):
+    order_id:str 
+    amount:int
+    currency: str = "XOF"
+    created_at: datetime 
+    transaction_status:TransactionStatusEnum

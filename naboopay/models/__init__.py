@@ -2,7 +2,7 @@ from .models import (CashOutRequest, CashOutResponse, CodeStatusExceptions,
                      DeleteTransactionRequest, DeleteTransactionResponse,
                      ExceptionMessage, GetAccountResponse, GetAllTransaction,
                      GetOneTransaction, NabooRequest, ProductModel,
-                     TransactionRequest, TransactionResponse, Wallet)
+                     TransactionRequest, TransactionResponse, Wallet,WebhookModel)
 
 __all__ = [
     "Wallet",
@@ -19,4 +19,5 @@ __all__ = [
     "GetAccountResponse",
     "NabooRequest",
     "ProductModel",
+    "WebhookModel"
 ]
