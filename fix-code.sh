@@ -7,4 +7,6 @@ ruff format naboopay test setup.py
 isort naboopay test setup.py
 black naboopay test setup.py
 
+pre-commit run --all-files
+
 echo "✅ Code fixes complete!"
