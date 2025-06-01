@@ -1,10 +1,10 @@
-import json
-import hmac
 import hashlib
-import os 
+import hmac
+import json
+import os
 from typing import Union
-from naboopay.models import WebhookModel
 
+from naboopay.models import WebhookModel
 
 
 class Webhook:
@@ -18,4 +18,3 @@ class Webhook:
         if not hmac.compare_digest(signature, expected_signature):
             return None 
         return WebhookModel(**payload)
-        

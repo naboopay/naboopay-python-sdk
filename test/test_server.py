@@ -1,6 +1,7 @@
-from naboopay import Webhook
 # import os
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, HTTPException, Request
+
+from naboopay import Webhook
 
 app = FastAPI()
 
