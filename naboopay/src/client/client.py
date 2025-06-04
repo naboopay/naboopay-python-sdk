@@ -5,7 +5,7 @@ import requests
 from tenacity import (retry, retry_if_exception_type, stop_after_attempt,
                       wait_random_exponential)
 
-from naboopay.config.settings import BASE_URL
+from naboopay.config.settings import BASE_URL, NABOOPAY_API_KEY_ENV
 from naboopay.src.auth.auth import Auth
 from naboopay.src.services import (Account, AsyncAccount, AsyncCashout,
                                    AsyncTransaction, Cashout, Transaction)
@@ -14,7 +14,9 @@ from naboopay.utils.errors import api_exception, general_exception
 
 class NabooPay:
     def __init__(
-        self, token: str = os.environ.get("NABOOPAY_API_KEY"), base_url: str = BASE_URL
+        self,
+        token: str = os.environ.get(NABOOPAY_API_KEY_ENV),
+        base_url: str = BASE_URL,
     ):
         self.auth = Auth(token)
         self.base_url = base_url
