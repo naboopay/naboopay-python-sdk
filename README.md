@@ -36,8 +36,14 @@ Hey there! Welcome to this fun and practical workshop on using the NabooPay Pyth
 ## Installation
 
 Let’s kick things off by installing the NabooPay Python SDK with this magical command. Run it in your terminal, and you’re good to go!
-
 with pip 
+
+```
+    pip install naboopay
+```
+
+for development : 
+
 ```bash
 pip install git+https://github.com/naboopay/naboopay-python-sdk.git
 ```
