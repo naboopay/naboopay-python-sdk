@@ -20,5 +20,5 @@ __all__ = [
     "GetAccountResponse",
     "NabooRequest",
     "ProductModel",
-    "WebhookModel"
+    "WebhookModel",
 ]

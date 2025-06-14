@@ -1,11 +1,11 @@
-import os
+from typing import Union
 
 import aiohttp
 import requests
 from tenacity import (retry, retry_if_exception_type, stop_after_attempt,
                       wait_random_exponential)
 
-from naboopay.config.settings import BASE_URL, NABOOPAY_API_KEY_ENV
+from naboopay.config.settings_api import Settings
 from naboopay.src.auth.auth import Auth
 from naboopay.src.services import (Account, AsyncAccount, AsyncCashout,
                                    AsyncTransaction, Cashout, Transaction)
@@ -15,11 +15,21 @@ from naboopay.utils.errors import api_exception, general_exception
 class NabooPay:
     def __init__(
         self,
-        token: str = os.environ.get(NABOOPAY_API_KEY_ENV),
-        base_url: str = BASE_URL,
+        token: Union[str, None] = None,
+        base_url: Union[str, None] = None,
     ):
-        self.auth = Auth(token)
-        self.base_url = base_url
+        self._settings = None
+        if base_url is None:
+            self._settings = Settings().model_dump()
+            self.base_url = self._settings["base_url"]
+        else:
+            self.base_url = self.base_url
+        if token is None:
+            self._settings = Settings().model_dump()
+            self.auth = Auth(self.settings["naboo_api_key"])
+        else:
+            self.auth = Auth(token)
+
         self.transaction = Transaction(self)
         self.account = Account(self)
         self.cashout = Cashout(self)
@@ -42,9 +52,22 @@ class NabooPay:
 
 
 class NabooPayAsync:
-    def __init__(self, token: str = None, base_url: str = BASE_URL):
-        self.auth = Auth(token) if token else Auth()
-        self.base_url = base_url
+    def __init__(
+        self, token: Union[str, None] = None, base_url: Union[str, None] = None
+    ):
+        self.settings = None
+        if base_url is None:
+            self.settings = Settings().model_dump()
+            self.base_url = self.settings["base_url"]
+        else:
+            self.base_url = self.base_url
+
+        if token is None:
+            self.settings = Settings().model_dump()
+            self.auth = Auth(self.settings["naboo_api_key"])
+        else:
+            self.auth = Auth(token)
+
         self.transaction = AsyncTransaction(self)
         self.account = AsyncAccount(self)
         self.cashout = AsyncCashout(self)

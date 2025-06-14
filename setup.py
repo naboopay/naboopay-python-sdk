@@ -8,7 +8,7 @@ with open(os.path.join(this_directory, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="naboopay",
-    version="1.0.0",
+    version="1.0.1",
     author="sudoping01",
     author_email="sudoping01@gmail.com",
     description="NabooPay Python SDK",
@@ -39,7 +39,8 @@ setup(
     install_requires=[
         "requests>=2.25.0",
         "aiohttp>=3.8.0",
-        "pydantic>=1.8.0,<2.0.0",
+        "pydantic==2.11.6",
+        "pydantic-settings==2.9.1",
         "tenacity>=9.1.2",
     ],
     extras_require={

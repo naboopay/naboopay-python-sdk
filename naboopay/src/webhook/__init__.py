@@ -1,3 +1,3 @@
 from .webhook import Webhook
 
-__all__=["Webhook"]
+__all__ = ["Webhook"]

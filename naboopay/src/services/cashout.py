@@ -9,7 +9,7 @@ class Cashout:
         data = request.dict()
         response = self.client._make_request(
             method=NabooRequest.cashout_wave.method,
-            endpoint=NabooRequest.cashout_wave.endpoint,
+            endpoint=NabooRequest.cashout_wave.endpoint.format(self.client.base_url),
             json=data,
         )
         return CashOutResponse(**response)
@@ -18,7 +18,9 @@ class Cashout:
         data = request.dict()
         response = self.client._make_request(
             method=NabooRequest.cashout_orange_money.method,
-            endpoint=NabooRequest.cashout_orange_money.endpoint,
+            endpoint=NabooRequest.cashout_orange_money.endpoint.format(
+                self.client.base_url
+            ),
             json=data,
         )
         return CashOutResponse(**response)
@@ -32,7 +34,7 @@ class AsyncCashout:
         data = request.dict()
         response = await self.client._make_request(
             method=NabooRequest.cashout_wave.method,
-            endpoint=NabooRequest.cashout_wave.endpoint,
+            endpoint=NabooRequest.cashout_wave.endpoint.format(self.client.base_url),
             json=data,
         )
         return CashOutResponse(**response)
@@ -41,7 +43,9 @@ class AsyncCashout:
         data = request.dict()
         response = await self.client._make_request(
             method=NabooRequest.cashout_orange_money.method,
-            endpoint=NabooRequest.cashout_orange_money.endpoint,
+            endpoint=NabooRequest.cashout_orange_money.endpoint.format(
+                self.client.base_url
+            ),
             json=data,
         )
         return CashOutResponse(**response)

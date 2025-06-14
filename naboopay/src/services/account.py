@@ -7,7 +7,8 @@ class Account:
 
     def get_info(self) -> GetAccountResponse:
         response = self.client._make_request(
-            method=NabooRequest.account.method, endpoint=NabooRequest.account.endpoint
+            method=NabooRequest.account.method,
+            endpoint=NabooRequest.account.endpoint.format(self.client.base_url),
         )
         return GetAccountResponse(**response)
 
@@ -18,6 +19,7 @@ class AsyncAccount:
 
     async def get_info(self) -> GetAccountResponse:
         response = await self.client._make_request(
-            method=NabooRequest.account.method, endpoint=NabooRequest.account.endpoint
+            method=NabooRequest.account.method,
+            endpoint=NabooRequest.account.endpoint.format(self.client.base_url),
         )
         return GetAccountResponse(**response)
