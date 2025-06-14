@@ -1,12 +1,11 @@
-# import os
+import os
+
 from fastapi import FastAPI, HTTPException, Request
 
 from naboopay import Webhook
 
 app = FastAPI()
-
-# NABOOPAY_WEBHOOK_SECRET = os.getenv("NABOOPAY_WEBHOOK_SECRET")
-NABOOPAY_WEBHOOK_SECRET = "begueeeeeeee"
+NABOOPAY_WEBHOOK_SECRET = os.getenv("NABOOPAY_WEBHOOK_SECRET")
 
 
 @app.post("/webhook")
