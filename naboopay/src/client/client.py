@@ -1,4 +1,3 @@
-
 from typing import Union
 
 import aiohttp
@@ -16,16 +15,16 @@ from naboopay.utils.errors import api_exception, general_exception
 class NabooPay:
     def __init__(
         self,
-        token: Union[str,None] = None,
-        base_url: Union[str,None] = None,
+        token: Union[str, None] = None,
+        base_url: Union[str, None] = None,
     ):
         self._settings = None
         if base_url is None:
             self._settings = Settings().model_dump()
-            self.base_url =  self._settings["base_url"]
+            self.base_url = self._settings["base_url"]
         else:
             self.base_url = self.base_url
-        if token is None: 
+        if token is None:
             self._settings = Settings().model_dump()
             self.auth = Auth(self.settings["naboo_api_key"])
         else:
@@ -53,18 +52,17 @@ class NabooPay:
 
 
 class NabooPayAsync:
-    def __init__(self,  
-                 token: Union[str,None] = None,
-                 base_url: Union[str,None] = None
-        ):
+    def __init__(
+        self, token: Union[str, None] = None, base_url: Union[str, None] = None
+    ):
         self.settings = None
         if base_url is None:
             self.settings = Settings().model_dump()
-            self.base_url =  self.settings["base_url"]
+            self.base_url = self.settings["base_url"]
         else:
             self.base_url = self.base_url
 
-        if token is None: 
+        if token is None:
             self.settings = Settings().model_dump()
             self.auth = Auth(self.settings["naboo_api_key"])
         else:

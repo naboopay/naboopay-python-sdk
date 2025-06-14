@@ -165,8 +165,8 @@ class CodeStatusExceptions:
 
 
 class WebhookModel(BaseModel):
-    order_id:str 
-    amount:int
+    order_id: str
+    amount: int
     currency: str = "XOF"
-    created_at: datetime 
-    transaction_status:TransactionStatusEnum
+    created_at: datetime
+    transaction_status: TransactionStatusEnum

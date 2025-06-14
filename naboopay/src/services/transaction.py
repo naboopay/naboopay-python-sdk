@@ -14,7 +14,9 @@ class Transaction:
         data = request.dict(exclude_unset=True)
         response = self.client._make_request(
             method=NabooRequest.create_transaction.method,
-            endpoint=NabooRequest.create_transaction.endpoint.format(self.client.base_url),
+            endpoint=NabooRequest.create_transaction.endpoint.format(
+                self.client.base_url
+            ),
             json=data,
         )
         return TransactionResponse(**response)
@@ -23,7 +25,9 @@ class Transaction:
         data = request.dict()
         response = self.client._make_request(
             method=NabooRequest.delete_transaction.method,
-            endpoint=NabooRequest.delete_transaction.endpoint.format(self.client.base_url),
+            endpoint=NabooRequest.delete_transaction.endpoint.format(
+                self.client.base_url
+            ),
             json=data,
         )
         return DeleteTransactionResponse(**response)
@@ -58,7 +62,9 @@ class Transaction:
         params = {"order_id": order_id}
         response = self.client._make_request(
             method=NabooRequest.get_one_transaction.method,
-            endpoint=NabooRequest.get_one_transaction.endpoint.format(self.client.base_url),
+            endpoint=NabooRequest.get_one_transaction.endpoint.format(
+                self.client.base_url
+            ),
             params=params,
         )
         return GetOneTransaction(**response)
@@ -72,7 +78,9 @@ class AsyncTransaction:
         data = request.dict(exclude_unset=True)
         response = await self.client._make_request(
             method=NabooRequest.create_transaction.method,
-            endpoint=NabooRequest.create_transaction.endpoint.format(self.client.base_url),
+            endpoint=NabooRequest.create_transaction.endpoint.format(
+                self.client.base_url
+            ),
             json=data,
         )
         return TransactionResponse(**response)
@@ -83,7 +91,9 @@ class AsyncTransaction:
         data = request.dict()
         response = await self.client._make_request(
             method=NabooRequest.delete_transaction.method,
-            endpoint=NabooRequest.delete_transaction.endpoint.format(self.client.base_url),
+            endpoint=NabooRequest.delete_transaction.endpoint.format(
+                self.client.base_url
+            ),
             json=data,
         )
         return DeleteTransactionResponse(**response)
@@ -118,7 +128,9 @@ class AsyncTransaction:
         params = {"order_id": order_id}
         response = await self.client._make_request(
             method=NabooRequest.get_one_transaction.method,
-            endpoint=NabooRequest.get_one_transaction.endpoint.format(self.client.base_url),
+            endpoint=NabooRequest.get_one_transaction.endpoint.format(
+                self.client.base_url
+            ),
             params=params,
         )
         return GetOneTransaction(**response)
