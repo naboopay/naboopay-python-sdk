@@ -1,5 +1,6 @@
 from naboopay.utils.utils import is_valid_uuid
 
+
 class Auth:
     def __init__(self, token: str):
         self.token = token

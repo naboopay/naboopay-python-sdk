@@ -3,6 +3,7 @@ import hmac
 import json
 import os
 from typing import Union
+
 from naboopay.config.settings_webhook import Settings
 from naboopay.models import WebhookModel
 

@@ -5,7 +5,6 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
-from naboopay.config.settings import BASE_URL
 from naboopay.utils.exceptions import (APIError, AuthenticationError,
                                        NabooPayError)
 
@@ -40,31 +39,31 @@ class httpsRequestInformation:
 
 class NabooRequest:
     create_transaction: httpsRequestInformation = httpsRequestInformation(
-        endpoint=f"{BASE_URL}/transaction/create-transaction", method="POST"
+        endpoint="{}/transaction/create-transaction", method="POST"
     )
 
     delete_transaction: httpsRequestInformation = httpsRequestInformation(
-        endpoint=f"{BASE_URL}/transaction/delete-transaction", method="DELETE"
+        endpoint="{}/transaction/delete-transaction", method="DELETE"
     )
 
     get_one_transaction: httpsRequestInformation = httpsRequestInformation(
-        endpoint=f"{BASE_URL}/transaction/get-one-transaction", method="GET"
+        endpoint="{}/transaction/get-one-transaction", method="GET"
     )
 
     get_transaction: httpsRequestInformation = httpsRequestInformation(
-        endpoint=f"{BASE_URL}/transaction/get-transactions", method="GET"
+        endpoint="{}/transaction/get-transactions", method="GET"
     )
 
     cashout_orange_money: httpsRequestInformation = httpsRequestInformation(
-        endpoint=f"{BASE_URL}/cashout/orange-money", method="POST"
+        endpoint="{}/cashout/orange-money", method="POST"
     )
 
     cashout_wave: httpsRequestInformation = httpsRequestInformation(
-        endpoint=f"{BASE_URL}/cashout/wave", method="POST"
+        endpoint="{}/cashout/wave", method="POST"
     )
 
     account: httpsRequestInformation = httpsRequestInformation(
-        endpoint=f"{BASE_URL}/account/", method="GET"
+        endpoint="{}/account/", method="GET"
     )
 
 

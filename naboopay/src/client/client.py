@@ -1,17 +1,16 @@
 
+from typing import Union
+
 import aiohttp
 import requests
-
-
 from tenacity import (retry, retry_if_exception_type, stop_after_attempt,
                       wait_random_exponential)
-from typing import Union
+
 from naboopay.config.settings_api import Settings
 from naboopay.src.auth.auth import Auth
 from naboopay.src.services import (Account, AsyncAccount, AsyncCashout,
                                    AsyncTransaction, Cashout, Transaction)
 from naboopay.utils.errors import api_exception, general_exception
-
 
 
 class NabooPay:
