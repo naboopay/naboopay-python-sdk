@@ -8,11 +8,12 @@ app = FastAPI()
 # NABOOPAY_WEBHOOK_SECRET = os.getenv("NABOOPAY_WEBHOOK_SECRET")
 NABOOPAY_WEBHOOK_SECRET = "begueeeeeeee"
 
+
 @app.post("/webhook")
 async def handle_webhook(request: Request):
     try:
         payload = await request.json()
-        signature = request.headers.get('X-Signature')
+        signature = request.headers.get("X-Signature")
         naboopay_webhook = Webhook(webhook_secret_key=NABOOPAY_WEBHOOK_SECRET)
         payment = naboopay_webhook.verify(payload, signature)
         if payment is None:
@@ -22,9 +23,5 @@ async def handle_webhook(request: Request):
         print(payment.transaction_status)
         print(payment.created_at)
         return {"status": "ok"}
-    except:
-        HTTPException(
-            status_code=500,
-            detail="Error"
-        )
-
+    except Exception:
+        HTTPException(status_code=500, detail="Error")
