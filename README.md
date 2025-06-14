@@ -69,7 +69,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-token = os.environ.get("NABOOPAY_API_KEY")
+token = os.environ.get("NABOO_API_KEY")
 # Alternatively: token = "your_token_here" (but shh, that’s not safe!)
 
 # You wanna know my phone number 😂, no bro you can't 🙃 let's load them as env var
