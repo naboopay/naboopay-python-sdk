@@ -8,7 +8,7 @@ with open(os.path.join(this_directory, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="naboopay",
-    version="1.0.1",
+    version="1.0.2",
     author="sudoping01",
     author_email="sudoping01@gmail.com",
     description="NabooPay Python SDK",
