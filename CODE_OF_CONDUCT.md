@@ -1,7 +1,7 @@
 # Code of Conduct
 
 ## Our Pledge
-We, as contributors and maintainers, pledge to make participation in the Djelia Python SDK community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity, level of experience, nationality, personal appearance, race, religion, or sexual orientation.
+We, as contributors and maintainers, pledge to make participation in the NabooPay Python SDK community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity, level of experience, nationality, personal appearance, race, religion, or sexual orientation.
 
 ## Our Standards
 - Be respectful, kind, and inclusive.
